@@ -38,7 +38,8 @@ SOURCES		:=	src \
 				src/utils
 DATA		:=	
 
-INCLUDES	:=  src
+INCLUDES	:=  src \
+				$(LIBOGC_INC)
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -56,7 +57,7 @@ MAKEFLAGS += --no-print-directory
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:= 
+LIBS	:= -logc
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
@@ -166,7 +167,7 @@ $(OUTPUT).elf:  $(OFILES)
 #---------------------------------------------------------------------------------
 %.o: %.c
 	@echo $(notdir $<)
-	@$(CC) -MMD -MP -MF $(DEPSDIR)/$*.d $(CFLAGS) -c $< -o $@ $(ERROR_FILTER)
+	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.d $(CFLAGS) -c $< -o $@ $(ERROR_FILTER)
 
 #---------------------------------------------------------------------------------
 %.o: %.S

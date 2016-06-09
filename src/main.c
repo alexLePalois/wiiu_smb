@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "dynamic_libs/os_functions.h"
 #include "dynamic_libs/vpad_functions.h"
+#include "system/smb_functions.h"
 
 static char * consoleArrayTv;
 static char * consoleArrayDrc;
@@ -80,6 +81,8 @@ int Menu_Main(void)
 	int vpadError = -1;
 	VPADData vpad;
 	int vpadReadCounter = 0;
+
+	//ConnectShare(0);
 
 	while(1)
 	{
